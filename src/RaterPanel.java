@@ -17,6 +17,12 @@ public class RaterPanel extends JPanel{
         rateTimer.cancel();
     }
     public void addPic(){
+            
+            try {
+                MusicPlayer.playmusic("music\\drum.mp3");
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
             JLabel tempLabel = new JLabel(" 拍");
             tempLabel.setFont(new Font("宋体",Font.BOLD,40));
             this.add(tempLabel);
@@ -25,8 +31,7 @@ public class RaterPanel extends JPanel{
     }
     public void clearPic(){
         this.removeAll();
-        this.revalidate();
-        this.repaint();
+        
     }
     private class BitTask extends TimerTask{
         private RaterPanel tempPanel;

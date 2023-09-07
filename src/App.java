@@ -1,7 +1,7 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import com.oracle.jrockit.jfr.FlightRecorder;
+///import com.oracle.jrockit.jfr.FlightRecorder;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

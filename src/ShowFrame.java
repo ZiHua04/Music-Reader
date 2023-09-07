@@ -14,6 +14,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.event.ActionEvent;
 
 public class ShowFrame extends JFrame{
@@ -24,6 +26,7 @@ public class ShowFrame extends JFrame{
     private static JPanel speedPanel = new JPanel(new GridLayout(6,1));
     private static JLabel textLabel;
     private static ScrollPanel scrollPanel;
+    private static RaterPanel raterPanel;
     public static void setSpeed(double xspeed){
         speed = xspeed;
          scrollPanel.setSpeed(speed);
@@ -153,7 +156,7 @@ public class ShowFrame extends JFrame{
         }
 
         
-       RaterPanel raterPanel = new RaterPanel(App.getNotes(), App.getBPM());
+        raterPanel = new RaterPanel(App.getNotes(), App.getBPM());
        this.add(raterPanel,BorderLayout.SOUTH);
        
         this.add(speedPanel,BorderLayout.EAST);
@@ -162,11 +165,51 @@ public class ShowFrame extends JFrame{
         Toolkit toolkit = this.getToolkit();
         Image icon = toolkit.getImage(config.HomeIconPath);
         this.setIconImage(icon);
-
+        
+        this.addWindowListener(new CloseWindowAcition());
+        //this.setUndecorated(true);
+        this.setAlwaysOnTop(true);
         this.setVisible(true);
         this.setFocusable(true);
         this.requestFocus();
         this.addKeyListener(new MyKeyListener(this));
+    }
+    class CloseWindowAcition implements WindowListener{
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+        
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            raterPanel.stopTimer();
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+        
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+        
+        }
+        @Override
+        public void windowActivated(WindowEvent e) {
+        
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+        
+        }
+        
     }
     
 }
