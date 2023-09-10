@@ -19,7 +19,7 @@ public class RaterPanel extends JPanel{
     public void addPic(){
             
             try {
-                MusicPlayer.playmusic("music\\drum.mp3");
+                MusicPlayer.playmusic("music\\newDrum.mp3");
             } catch (Exception e) {
                 // TODO: handle exception
             }

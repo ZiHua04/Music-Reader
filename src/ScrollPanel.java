@@ -77,7 +77,7 @@ public class ScrollPanel extends JPanel implements ActionListener{
         }
 
         g2d.dispose();
-
+        //setSpeed(imageHeight * 1.0 / (100 * (App.getBeats() * App.getNotes() * 60.0 / App.getBPM())));
     }
     public void setSpeed(double xspeed){
         speed = xspeed;

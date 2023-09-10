@@ -27,7 +27,7 @@ class App{
     private static int Beats;
     private static int Notes;
     private static int BPM;
-    private static RatePanel ratePanel = new RatePanel(new GridLayout(4, 1),new App());
+    private static RatePanel ratePanel = new RatePanel(new GridLayout(7, 1),new App());
     private static JLabel textLabel;
     private static JFrame myFrame;
     private static JPanel imgPanel;
@@ -55,7 +55,9 @@ class App{
     public static int getNotes(){
         return Notes;
     }
-
+    public static int getBeats(){
+        return Beats;
+    }
     private static class addAction implements ActionListener{
 
         @Override
@@ -140,7 +142,6 @@ class App{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("开始播放");
             if(imgVector.size() <= 0){
                 System.out.println("未输入图片");
                 int result = JOptionPane.showConfirmDialog(null, "是否打开选择框", "未选择图片", JOptionPane.YES_NO_OPTION);
@@ -149,9 +150,14 @@ class App{
                     action.actionPerformed(e);
                 }
             }
+            else if(ratePanel.isEmpty()){
+                JOptionPane confirmOptionPane = new JOptionPane();
+                confirmOptionPane.showConfirmDialog(null, "请输入节奏", "警告", JOptionPane.DEFAULT_OPTION);
+            }
             else{
                 showFrame = new ShowFrame(imgVector, speed);
                 //new Rater(Notes, BPM);
+                System.out.println("开始播放");
             }
         }
         
